@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+    <meta name="description" content='Kobler Live Articles App' />
+    <title>Kobler Live Articles App</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class='wrapper'>
+      <header>
+        <div id='online-users'></div>
+        <hr>
+      </header>
+      <main>
+        <h1>Articles</h1>
+        <div class='open-btn'>
+          <button class='open-button' onclick='openForm()' aria-label='Add article'>
+            <i class='fas fa-plus'></i>
+            <strong>Add article</strong>
+          </button>
+        </div>
+        <br>
+        <div id='loginPopup'>
+          <div class='form-popup' id='popupForm'>
+            <form action='/articles/' method='post' class='form-container' aria-label='New article'>
+              <h2>New Article</h2>
+              <div>
+                <label for='title'>Title</label>
+                <input type='text' id='title' name='title' required>
+              </div>
+              <div>
+                <label for='published'>Published</label>
+                <input type='date' id='published' name='published' required>
+              </div>
+              <div>
+                <label for='site'>Site</label>
+                <input type='text' id='site' name='site' required>
+              </div>
+              <button type='submit' class='btn' aria-label='Create article'><strong>Create article</strong></button>
+              <button type='button' class='btn cancel' onclick='closeForm()' aria-label='Cancel'><strong>Cancel</strong></button>
+            </form>
+          </div>
+        </div>
+        <br>
+        <div class='table-container' aria-label='Articles' id='tableContainer'></div>
+        <div id='articles-count'></div>
+        <button id='btnMore' onclick='loadMore()' aria-label='Load more articles'><strong>Load more</strong></button>
+      </main>
+    </div>
+    <script src='/socket.io/socket.io.js'></script>
+    <script type='text/javascript' src="index.js"></script>
+  </body>
+</html>
